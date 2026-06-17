@@ -39,9 +39,9 @@ tutorialjava/
 Buat database dan tabel berikut di MySQL sebelum menjalankan aplikasi:
 
 ```sql
-CREATE DATABASE db_siswa;
+CREATE DATABASE tutorialjava1;
 
-USE db_siswa;
+USE tutorialjava1;
 
 CREATE TABLE students (
     nis     VARCHAR(20) PRIMARY KEY,
