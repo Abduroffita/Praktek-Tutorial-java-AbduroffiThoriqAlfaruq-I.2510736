@@ -1,4 +1,4 @@
-# 📚 GUI_CRUD_Fikri — Aplikasi CRUD Data Siswa
+# 📚 GUI_CRUD_Thoriq — Aplikasi CRUD Data Siswa
 
 Aplikasi desktop berbasis Java Swing untuk manajemen data siswa menggunakan konsep **Object-Oriented Programming (OOP)** dengan koneksi database MySQL.
 
@@ -102,6 +102,9 @@ String pass = "password_kamu";
 ## 📸 Tampilan Aplikasi
 
 Form input di sisi kiri memungkinkan pengguna memasukkan NIS, Nama, Jurusan, Jenis Kelamin, dan Alamat. Data yang tersimpan langsung ditampilkan pada tabel di sisi kanan secara real-time.
+<img width="1917" height="1140" alt="image" src="https://github.com/user-attachments/assets/ad18d38b-5f0a-482d-844d-43f86c1e30cf" />
+
+
 
 ---
 
@@ -109,9 +112,9 @@ Form input di sisi kiri memungkinkan pengguna memasukkan NIS, Nama, Jurusan, Jen
 
 | | |
 |-|-|
-| **Nama** | Muhammad Fikri |
-| **NIM** | I.2510162 |
-| **Program Studi** | Teknik Informatika |
+| **Nama** | Abduroffi Thoriq Alfaruq |
+| **NIM** | I.2510736 |
+| **Program Studi** | Ilmu Komputer |
 | **Universitas** | Universitas Djuanda Bogor (UNIDA) |
 | **Mata Kuliah** | Pemrograman Berorientasi Objek |
 
