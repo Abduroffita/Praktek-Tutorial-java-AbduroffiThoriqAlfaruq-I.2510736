@@ -1,50 +1,120 @@
-# Praktek-Tutorial-java-AbduroffiThoriqAlfaruq-I.2510736
+# 📚 GUI_CRUD_Fikri — Aplikasi CRUD Data Siswa
 
-**Deskripsi Proyek**
-Proyek ini adalah aplikasi desktop "Form Siswa" berbasis Java yang dirancang untuk mengelola pendataan siswa. Aplikasi ini mengimplementasikan fungsi dasar CRUD yang memungkinkan pengguna untuk memasukkan, menampilkan, memperbarui, dan menghapus riwayat data siswa yang terhubung ke database.
-
-## Fitur Aplikasi
-Antarmuka Form Siswa dilengkapi dengan form pengisian dan tombol aksi berikut:
-- Input Data: Mendukung pengisian Nomor Induk Siswa (NIS), Nama, Jurusan (Dropdown), Jenis Kelamin (Dropdown), dan Alamat (Text Area).
-- Simpan: Menyimpan data siswa baru yang dimasukkan ke dalam database.
-- Update: Memperbarui atau mengedit informasi data siswa yang sudah ada.
-- Hapus: Menghapus entri data siswa yang dipilih.
-- Reset: Membersihkan seluruh kolom input untuk mempermudah pengisian data baru.
-- Tabel Data: Menampilkan rekapitulasi daftar siswa yang sudah berhasil disimpan secara langsung.
+Aplikasi desktop berbasis Java Swing untuk manajemen data siswa menggunakan konsep **Object-Oriented Programming (OOP)** dengan koneksi database MySQL.
 
 ---
 
-## Teknologi yang Digunakan
- 
-- Bahasa Pemrograman: Java
-- GUI Framework: Java Swing
-- IDE: Apache NetBeans IDE
-- Build Tool: Maven
-- Database Integration: Menggunakan koneksi JDBC.
+## 🧰 Teknologi yang Digunakan
+
+| Teknologi | Keterangan |
+|-----------|------------|
+| Java (Swing) | Framework GUI desktop |
+| MySQL | Database penyimpanan data siswa |
+| JDBC | Koneksi Java ke database |
+| Maven | Build tool & dependency management |
+| IntelliJ IDEA | IDE pengembangan |
 
 ---
 
-## Struktur Proyek
+## 📁 Struktur Project
 
-- FormSiswa.java: Berisi logika antarmuka pengguna (GUI) dan event handler untuk tombol-tombol aksi.
-- koneksi.java: Mengatur konfigurasi untuk menyambungkan aplikasi Java ke server database.
-
-- pom.xml: File konfigurasi Maven untuk mengelola dependencies proyek.
+```
+GUL_CRUD_Fikri/
+├── src/
+│   └── main/
+│       └── java/
+│           └── org/example/
+│               ├── DatabaseConnection.java   # Konfigurasi koneksi ke MySQL
+│               ├── StudentDAO.java           # Data Access Object (CRUD logic)
+│               ├── FormSiswa.java            # GUI utama (Swing JFrame)
+│               └── Main.java                 # Entry point aplikasi
+├── pom.xml                                   # Konfigurasi Maven
+└── README.md
+```
 
 ---
 
-## Penggunaan Layout Manual 
-Pada baris kode yang terlihat di belakang form (lblJk.setBounds(20, 185, 80, 25);), terlihat bahwa kamu menggunakan posisi absolut (Absolute Layout). Ini berarti komponen diatur berdasarkan koordinat piksel secara spesifik.
+## 🗄️ Skema Database
+
+Buat database dan tabel berikut di MySQL sebelum menjalankan aplikasi:
+
+```sql
+CREATE DATABASE db_siswa;
+
+USE db_siswa;
+
+CREATE TABLE students (
+    nis     VARCHAR(20) PRIMARY KEY,
+    nama    VARCHAR(100) NOT NULL,
+    jurusan VARCHAR(100),
+    jk      VARCHAR(15),
+    alamat  TEXT
+);
+```
 
 ---
 
-## Koneksi Database Aktif
-Adanya file koneksi.java pada tab di sebelah FormSiswa.java mengonfirmasi bahwa data yang tampil di tabel (seperti data siswa bernama "Ifforudba" dan "i ketut mandra...") kemungkinan besar ditarik (di-fetch) langsung dari tabel database sungguhan.
+## ⚙️ Konfigurasi Koneksi Database
+
+Edit file `DatabaseConnection.java` sesuai konfigurasi MySQL lokal kamu:
+
+```java
+// Contoh konfigurasi
+String url  = "jdbc:mysql://localhost:3306/db_siswa";
+String user = "root";
+String pass = "password_kamu";
+```
 
 ---
 
-## Proses Build Berhasil
-Di bagian Output paling bawah, terdapat pesan Nothing to compile - all classes are up to date. Ini menandakan Maven telah berhasil mengecek dan melakukan kompilasi program tanpa adanya pesan error syntax, sehingga form GUI dapat di-Run dengan mulus.
+## 🚀 Cara Menjalankan
 
-## Screenshots
-<img width="1917" height="1140" alt="image" src="https://github.com/user-attachments/assets/d56151bf-4bd4-4e25-a3be-0d02aeeeaeb2" />
+1. Clone atau download repository ini
+2. Buka project di IntelliJ IDEA
+3. Pastikan MySQL berjalan dan database sudah dibuat
+4. Sesuaikan konfigurasi di `DatabaseConnection.java`
+5. Jalankan `Main.java` atau `FormSiswa.java`
+
+---
+
+## ✨ Fitur Aplikasi
+
+| Fitur | Deskripsi |
+|-------|-----------|
+| ➕ **Simpan** | Menambahkan data siswa baru ke database |
+| 📋 **Tampil** | Menampilkan seluruh data siswa di tabel |
+| ✏️ **Update** | Memperbarui data siswa berdasarkan NIS |
+| 🗑️ **Hapus** | Menghapus data siswa berdasarkan NIS |
+| 🔄 **Reset** | Mengosongkan semua field input |
+| 🖱️ **Klik baris** | Klik data di tabel → otomatis mengisi form |
+
+---
+
+## 🏗️ Konsep OOP yang Diterapkan
+
+- **Encapsulation** — Data siswa dikelola melalui class `StudentDAO`, memisahkan logika akses data dari tampilan GUI
+- **Abstraction** — Class `DatabaseConnection` menyembunyikan detail koneksi JDBC dari kelas lain
+- **Separation of Concerns** — Tampilan (`FormSiswa`), logika data (`StudentDAO`), dan koneksi (`DatabaseConnection`) dipisahkan ke masing-masing class
+- **DAO Pattern** — Pola Data Access Object diterapkan untuk memisahkan operasi database dari logika bisnis
+
+---
+
+## 📸 Tampilan Aplikasi
+
+Form input di sisi kiri memungkinkan pengguna memasukkan NIS, Nama, Jurusan, Jenis Kelamin, dan Alamat. Data yang tersimpan langsung ditampilkan pada tabel di sisi kanan secara real-time.
+
+---
+
+## 👤 Informasi Pengembang
+
+| | |
+|-|-|
+| **Nama** | Muhammad Fikri |
+| **NIM** | I.2510162 |
+| **Program Studi** | Teknik Informatika |
+| **Universitas** | Universitas Djuanda Bogor (UNIDA) |
+| **Mata Kuliah** | Pemrograman Berorientasi Objek |
+
+---
+
+> Tugas Akhir — Mata Kuliah Pemrograman Berorientasi Objek (OOP)
